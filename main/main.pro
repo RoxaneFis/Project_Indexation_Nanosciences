@@ -6,8 +6,10 @@ CONFIG += c++11
 SOURCES += \\
         main.cpp \
     kdtree.cpp \
-    noeud.cpp
+    noeud.cpp \
+    point.cpp
 
 HEADERS += \
     kdtree.h \
-    noeud.h
+    noeud.h \
+    point.h
