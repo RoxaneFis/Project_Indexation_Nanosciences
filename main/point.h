@@ -14,6 +14,9 @@ public:
     double* coords;
     std::string label;
 
+    double dist( Point &q);
+    static bool set_dim (int _d);
+    static int get_dim();
 
 };
 
