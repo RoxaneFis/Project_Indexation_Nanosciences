@@ -1,11 +1,26 @@
 #ifndef NOEUD_H
 #define NOEUD_H
+#include "point.h"
+#include <iostream>
+#include <cmath>	// for sqrt, fabs
 
 
 class noeud
 {
 public:
-    noeud();
+    int axe;
+    double med;
+    //int index;
+    Point p;
+    noeud *left;
+    noeud *right;
+
+    //noeud();
+    noeud(Point _p);
+    noeud(int _axe, double _med, Point _p, noeud* _left, noeud* _right);
+
+
+
 };
 
 #endif // NOEUD_H

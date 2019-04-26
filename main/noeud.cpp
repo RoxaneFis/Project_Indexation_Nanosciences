@@ -1,6 +1,22 @@
 #include "noeud.h"
 
-noeud::noeud()
+noeud::noeud(Point _p)
 {
+    //int index;
+     p=_p;
+     left=NULL;
+     right=NULL;
+
+
+}
+
+
+noeud::noeud(int _axe, double _med, Point _p, noeud* _left, noeud* _right) {
+    //int index;
+    axe=_axe;
+    med=_med;
+    p=_p;
+    left=_left;
+    right=_right;
 
 }
