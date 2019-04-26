@@ -7,9 +7,11 @@ SOURCES += \\
         main.cpp \
     kdtree.cpp \
     noeud.cpp \
-    point.cpp
+    point.cpp \
+    linkedlistpoint.cpp
 
 HEADERS += \
     kdtree.h \
     noeud.h \
-    point.h
+    point.h \
+    linkedlistpoint.h
