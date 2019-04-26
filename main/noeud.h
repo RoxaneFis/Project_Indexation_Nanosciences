@@ -8,14 +8,12 @@
 class noeud
 {
 public:
-    int axe;
-    double med;
-    //int index;
+    int axe; //dimension (axe verticale, horizontale...)
+    double med; //valeur de la mediane
     Point p;
     noeud *left;
     noeud *right;
 
-    //noeud();
     noeud(Point _p);
     noeud(int _axe, double _med, Point _p, noeud* _left, noeud* _right);
 
