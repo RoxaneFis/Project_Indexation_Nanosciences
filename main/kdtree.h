@@ -9,6 +9,11 @@ public:
 
     ~kdtree();
 
+
+    double computeMedian(point* P, int start, int end, int c) ;
+
+    int partition(point* P, int start, int end, int c, int dim);
+
 private:
 
 };
