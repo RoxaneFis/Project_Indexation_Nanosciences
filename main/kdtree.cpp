@@ -1,6 +1,34 @@
 #include "kdtree.h"
 
 
+kdtree::kdtree(point* P, int start, int end, int c, int dim){
+    assert (end-start >= 0);
+      if (debug)
+        std::cout << "start=" << start << ", end=" << end << ", c=" << c << std::endl;
+      if (end-start == 0)  // no data point left to process
+        return NULL;
+      else if (end-start == 1)  // leaf node
+        return create_node (start);
+      else {  // internal node
+        if (debug) {
+          std::cout << "array:\n";
+          for (int i=start; i<end; i++)
+            print(P[i],dim);
+        // std::cout << P[i] << ((i==end-1)?"\n":" ");
+        }
+        // compute partition
+        // rearrange subarray (less-than-median first, more-than-median last)
+        int p = partition (P, start, end, c, dim);
+        double m = P[p][c];
+        // prepare for recursive calls
+        int cc = (c+1)%dim;  // next coordinate
+        return create_node (c, m, p,
+                 build (P, start, p, cc, dim),
+                 build (P, p+1, end, cc, dim));
+      }
+
+}
+
 double kdtree::computeMedian(point* P,int start, int end, int axe){
 
         double coords [end-start];
