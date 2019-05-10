@@ -38,3 +38,13 @@ int Point::get_dim () {
 double Point::getcoord(int i){
     return coords[i];
 }
+
+
+
+void Point::print(Point p, int dim) {
+  std::cout << p[0];
+  for ( int j = 1; j < dim; j++)
+    std::cout << " " << p[j];
+  std::cout << "\n";
+}
+
