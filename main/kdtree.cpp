@@ -2,9 +2,6 @@
 #include <cassert>
 #include <algorithm>
 
-//noeud(Point _p);
-//noeud(int _axe, double _med, Point _p, noeud* _left, noeud* _right);
-
 
 //fonction constructeurs
 noeud* kdtree::build (Point* P, int start, int end, int c, int dim) {
@@ -90,29 +87,32 @@ std::list<result> kdtree::search( Point q, float r){
         }
         else{
 
-            int c=a->axe;
-            if(a->p.dist(q)<r){
-                result match(a->p.label,a->p,a->p.dist(q));
+            int c=a.axe;
+            if(a.p.dist(q)<r){
+                result match(a.p.label,a.p,a.p.dist(q));
                 reponse.push_front(match);
 
             }
 
-            if(std::abs(q.coords[c]-a->med)<=r){
-                attente.push_last(a->left);
-                attente.push_last(a->right);
+            if(std::abs(q.coords[c]-a.med)<=r){
+                attente.push_back(*a.left);
+                attente.push_back(*a.right);
+
+
             }
 
             else{
-                if(q.coords[c]>a->med){
-                    attente.push_last(a->right);
+                if(q.coords[c]>a.med){
+                    attente.push_back(*a.right);
                 }
-                else{attente.push_last(a->left);}
+                else{attente.push_back(*a.left);}
 
             }
         }
     }
-    return reponse();
+    return reponse;
 }
+
 
 
 

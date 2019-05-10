@@ -15,6 +15,5 @@ HEADERS += \
     kdtree.h \
     noeud.h \
     point.h \
-    linkedlistpoint.h \
     proteine.h \
     result.h

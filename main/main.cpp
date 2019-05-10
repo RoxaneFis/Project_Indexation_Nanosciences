@@ -3,13 +3,15 @@
 #include <algorithm>
 #include <string>
 #include<sstream>
+#include <list>
+
 #include"point.h"
 #include "proteine.h"
-#include <list>
+#include "kdtree.h"
+#include "result.h"
+#include "noeud.h"
+
 using namespace std;
-
-
-
 
 
 // je cree d'abord une fonction split qui renvoie un vecteur de string
@@ -30,7 +32,6 @@ vector<string> split(const string &chaine, char delimiteur)
 }
 
 // fin de la fonction split
-
 
 
 
@@ -162,9 +163,6 @@ int main()
             std::cout<< score[j].name<< std::endl;
         }
     }
-
-
-
     // fin de l'algorithme naif
 
 
