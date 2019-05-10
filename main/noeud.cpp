@@ -4,8 +4,8 @@ noeud::noeud(Point _p)
 {
     //int index;
      p=_p;
-     left=NULL;
-     right=NULL;
+     left=nullptr;
+     right=nullptr;
 
 
 }
@@ -20,3 +20,4 @@ noeud::noeud(int _axe, double _med, Point _p, noeud* _left, noeud* _right) {
     right=_right;
 
 }
+
