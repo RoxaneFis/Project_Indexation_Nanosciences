@@ -1,7 +1,8 @@
-
+#ifndef KDTREE_H
 #define KDTREE_H
 #include <iostream>
 #include "noeud.h"
+#include "point.h"
 
 class kdtree
 {
@@ -27,4 +28,5 @@ public:
 private:
 
 };
+#endif
 

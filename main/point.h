@@ -10,7 +10,7 @@ class Point
 public:
     Point();
     Point(double* c, std::string l);
-    ~Point();
+    //~Point();
 
     static int d;
     double* coords;
@@ -20,7 +20,7 @@ public:
     static bool set_dim (int _d);
     static int get_dim();
     double getcoord(int i);
-    void print(Point p, int dim);
+    //void print(Point p, int dim);
 
 };
 
