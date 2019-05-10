@@ -1,5 +1,6 @@
 #include "kdtree.h"
 #include "point.h"
+#include "stdlib.h"
 
 
 //noeud(Point _p);
@@ -85,16 +86,36 @@ std::list<result> kdtree::search( Point q, float r){
 
     while (attente.size()>0) {
         noeud* a= attente.pop_front();
+        if(a->isleaf()){
+            if(a->p.dist(q)<r){
+                result match(a->p.label,a->p,a->p.dist(q));
+                reponse.push_front(match);
+            }
+        }
+        else{
 
+            int c=a->axe;
+            if(a->p.dist(q)<r){
+                result match(a->p.label,a->p,a->p.dist(q));
+                reponse.push_front(match);
 
+            }
 
+            if(abs(q.coords[c]-a->med)<=r){
+                attente.push_last(a->left);
+                attente.push_last(a->right);
+            }
+
+            else{
+                if(q.coords[c]>a->med){
+                    attente.push_last(a->right);
+                }
+                else{attente.push_last(a->left);}
+
+            }
+        }
     }
-
-
-
-
-
-
+    return reponse();
 }
 
 

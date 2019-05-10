@@ -10,11 +10,13 @@ SOURCES += \\
     point.cpp \
     linkedlistpoint.cpp \
     proteine.cpp \
-    test_kdtree.cpp
+    test_kdtree.cpp \
+    result.cpp
 
 HEADERS += \
     kdtree.h \
     noeud.h \
     point.h \
     linkedlistpoint.h \
-    proteine.h
+    proteine.h \
+    result.h
