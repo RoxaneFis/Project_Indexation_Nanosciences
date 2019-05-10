@@ -8,7 +8,6 @@ SOURCES += \\
     kdtree.cpp \
     noeud.cpp \
     point.cpp \
-    linkedlistpoint.cpp \
     proteine.cpp \
     test_kdtree.cpp \
     result.cpp
