@@ -12,6 +12,7 @@ public:
     proteine(string s, int p);
     ~proteine();
     int getscore();
+    int addscore();
 
 private:
     int score;

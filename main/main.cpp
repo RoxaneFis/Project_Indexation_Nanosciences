@@ -133,9 +133,15 @@ int main()
              Point *p= new Point(coords,s);
              while(l.next != NULL) // on parcourt tous les autres vecteurs
              {
-                 if( l.point.dist(p)< /*distance a determiner */ )
+                 if( l->point.dist(p)< /*distance a determiner */ )
                  {
-                        score[stoi(l.point.label)]++;
+                        string name1= l->point.label;
+                        for(int i=0;i<cmpt;i++){
+                            if(score[i].name==name1){
+                                score[i].addscore();
+                            }
+                        }
+
                  }
                  l=l.next;
              }

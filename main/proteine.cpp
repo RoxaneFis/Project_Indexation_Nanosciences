@@ -14,3 +14,6 @@ proteine::~proteine(){
 int proteine::getscore(){
     return score;
 }
+void proteine::addscore(){
+    score=score+1;
+}
