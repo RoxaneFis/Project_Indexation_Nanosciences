@@ -1,6 +1,7 @@
 
 #define KDTREE_H
 #include <iostream>
+#include "noeud.h"
 
 class kdtree
 {
@@ -10,11 +11,13 @@ public:
     ~kdtree();
 
 
-    double computeMedian(point* P, int start, int end, int axe) ;
+    double computeMedian(Point* P, int start, int end, int c) ;
 
-    int partition(point* P, int start, int end, int axe, int dim);
+    int partition(Point* P, int start, int end, int c, int dim);
 
-    void swap (point* P, int i, int j);
+    void bsearch (noeud* n, Point q, int dim, double& res, Point& nnp) ;
+
+    void swap(Point* P, int i, int j);
 
 private:
 
