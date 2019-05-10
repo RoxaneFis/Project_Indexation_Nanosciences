@@ -1,20 +1,28 @@
 
 #define KDTREE_H
 #include <iostream>
+#include "noeud.h"
 
 class kdtree
 {
 public:
-    kdtree(point* P, int start, int end, int c, int dim);
+
+    
+    
+    noeud * racine;
+    
+    noeud * build (Point* P, int start, int end, int c, int dim);
+    
+    kdtree(Point* P, int start, int end, int c, int dim);
+
+    kdtree();
 
     ~kdtree();
 
-
-    double computeMedian(point* P, int start, int end, int axe) ;
-
-    int partition(point* P, int start, int end, int axe, int dim);
-
-    void swap (point* P, int i, int j);
+    
+    double computeMedian(Point* P, int start, int end, int c) ;
+    int partition(Point* P, int start, int end, int c, int dim);
+    void swap(Point* P, int i, int j);
 
 private:
 

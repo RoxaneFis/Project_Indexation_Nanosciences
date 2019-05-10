@@ -147,7 +147,7 @@ int main()
              }
          }
 
-         int limite= ;// a determiner
+         int limite= 1;// a determiner
          for(int j=0; j< cmpt ;j++)
          {
              if(score[j].getscore()> limite ){
