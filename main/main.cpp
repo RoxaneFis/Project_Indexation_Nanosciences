@@ -3,7 +3,13 @@
 #include <algorithm>
 #include <string>
 #include "linkedlistpoint.h"
+#include "proteine.h"
 using namespace std;
+
+
+
+
+
 // je cree d'abord une fonction split qui renvoie un vecteur de string
 void split(const string &chaine, char delimiteur, vector &elements)
 {
@@ -29,20 +35,65 @@ vector split(const string &chaine, char delimiteur)
 
 int main()
 {
+    const char* file=".txt";
 
-// il faut d'abord creer un tableau score avec toutes les references des proteines
-    int score [/*nombre de proteines total */]
-// mettre le score a 0 pour toutes les proteines
+    // premiere lecture du fichier pour avoir le nombre de proteines
 
-// code pour lire le fichier avec les vecteurs et creer une linkedlist de points
-// on ouvre le fichier avec les differents vecteurs
-    ifstream fichier("vecteurspdb.txt", ios::in);
-    if(fichier)  // si l'ouverture a réussi
+    std::ifstream fs(file);
 
-    {
-        LinkedListPoint *l= new LinkedListPoint();
+    if(fs.fail()){
+        std::cout<<"Cannot open file from "<<file <<std::endl;
+
+    }
+    string line;
+    int cmpt=1;
+    while(getligne(fs,line)){
+    vector<string> x = split(line, ' ');
+    string name= x[12];
+
+        while( split(line,' ')[12]==name){
+        getligne(fs,line);
+        }
+    cmpt=cmpt+1;
+
+    }
+    fs.close();
+
+
+
+// tableau des scores
+    proteine score [cmpt];
+
+
+
+
+
+    // 2eme parcours pour remplir le tableau et creer les proteines avec un score de zero
+     std::ifstream fs(file);
+     string line;
+     int i=0;
+     while(getligne(fs,line)){
+     vector<string> x = split(line, ' ');
+     string name= x[12];
+     score[i]= proteine(name, 0);
+
+         while( split(line,' ')[12]==name){
+         getligne(fs,line);
+         }
+     i=i+1;
+
+     }
+     fs.close();
+
+
+
+
+
+// pacrous du fichier pour creer les vecteurs et les stockes dans une structure linkedlist
+     std::ifstream fs(file);
+    LinkedListPoint *l= new LinkedListPoint();
         string ligne;
-        while(getligne(fichier, ligne)){
+        while(getligne(fs, ligne)){
             vector<string> x = split(ligne, ' ');
             double coords[13];
             for(int i=0;i<12;i++){
@@ -55,19 +106,21 @@ int main()
         }
 
 
-        fichier.close();  // on ferme le fichier
+        fs.close();
 
-    }
 
-    else  // sinon
 
-        cerr << "Impossible d'ouvrir le fichier !" << endl;
+
 
 // on aura egalement un fichier txt decrivant notre proteine  ici debute l'algorithme naif
 
-     ifstream fichier("notreproteine.txt", ios::in);
-     if(fichier)
-     {
+        const char* fichier=".txt";
+     std::ifstream fs(fichier);
+     if(fs.fail()){
+         std::cout<<"Cannot open file from "<<fichier <<std::endl;
+
+     }
+
          string ligne_prime;
          while(getligne(fichier, ligne_prime))
          {
@@ -87,16 +140,18 @@ int main()
                  l=l.next;
              }
          }
-         for(int i=0; i< /*nbr de prot*/ ;i++)
+
+         int limite= ;// a determiner
+         for(int j=0; j< cmpt ;j++)
          {
-             if(score[numeroprot]> /* limite a determiner */ ){
-                 // la proteine est a retenir
+             if(score[j].getscore()> limite ){
+                  std::cout<< score[j].name<< std::endl;
              }
          }
 
 
-     }
-     // ici se termine l'algorithme naif
+
+     // fin de l'algorithme naif
 
 
 
