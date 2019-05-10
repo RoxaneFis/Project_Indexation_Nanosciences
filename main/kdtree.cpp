@@ -1,5 +1,7 @@
 #include "kdtree.h"
 #include "point.h"
+#include <list>
+
 
 
 //noeud(Point _p);
@@ -18,7 +20,6 @@ noeud* kdtree::build (Point* P, int start, int end, int c, int dim) {
 
   else {  // internal node
       for (int i=start; i<end; i++){
-        //print(P[i],dim);
        std::cout << P[i].getcoord(0) << ((i==end-1)?"\n":" ");
       }
     }
@@ -36,11 +37,6 @@ noeud* kdtree::build (Point* P, int start, int end, int c, int dim) {
 kdtree::kdtree(Point* P, int start, int end, int c, int dim){
     racine = build (P, start, end, c,  dim);
 }
-
-
-
-
-
 
 
 void kdtree::swap(Point* P, int i, int j) {
@@ -78,29 +74,6 @@ int kdtree::partition(Point* P, int start, int end, int axe, int dim) {
 
 
 
-int main(){
 
-
-      int n = 5;  // n points in R^{dim}
-      int dim = 2;
-      // random input data points (uniformly sampled in unit cube)
-      srand (time(NULL));
-      Point * P[n];
-      for (int i=0; i<n; i++) {
-          double *c;
-          c={1,2};
-          P[i] =Point(c, "t");
-        for (int j=0; j<dim; j++)
-          P[i][j] = i;
-      }
-      noeud* f = build ( P, 0, n, 0,  dim);
-      //std::cout<<"debut built" << f->m << f->left->m <<f->right->m <<"fin built"<< std::endl;
-
-
-
-
-
-    return 0;
-}
 
 

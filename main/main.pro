@@ -9,7 +9,8 @@ SOURCES += \\
     noeud.cpp \
     point.cpp \
     linkedlistpoint.cpp \
-    proteine.cpp
+    proteine.cpp \
+    test_kdtree.cpp
 
 HEADERS += \
     kdtree.h \
