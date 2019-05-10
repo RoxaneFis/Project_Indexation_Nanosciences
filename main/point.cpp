@@ -1,9 +1,10 @@
 #include "point.h"
 #include <cmath>	// for sqrt, fabs
 
+int Point::d;
+
 
 Point::Point(){
-
 }
 
 Point::Point(double* c, std::string l)
@@ -44,10 +45,12 @@ double Point::getcoord(int i){
 
 
 
-void Point::print(Point p, int dim) {
+/*void Point::print(Point p, int dim) {
   std::cout << p[0];
   for ( int j = 1; j < dim; j++)
     std::cout << " " << p[j];
   std::cout << "\n";
-}
+}*/
+
+
 
