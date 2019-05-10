@@ -11,6 +11,9 @@ Point::Point(double* c, std::string l)
     this->coords=c;
     this->label=l;
 }
+Point::~Point(){
+
+}
 
 
 double Point::dist(Point &q)

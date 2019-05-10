@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <string>
 #include<sstream>
-#include "linkedlistpoint.h"
+#include"point.h"
 #include "proteine.h"
 #include <list>
 using namespace std;
@@ -151,6 +151,9 @@ int main()
         }
     }
     f3.close();
+
+
+    // selon une limite on decide ou pas de retenir une proteine
 
     int limite= 1;// a determiner
     for(int j=0; j< cmpt ;j++)
