@@ -1,7 +1,8 @@
 #include "kdtree.h"
+#include "point.h"
 
-void kdtree::swap(point* P, int i, int j) {
-    point temp = P[i];
+void kdtree::swap(Point* P, int i, int j) {
+    Point temp = P[i];
     P[i] = P[j];
     P[j] = temp;
   }
