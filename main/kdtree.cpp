@@ -76,6 +76,32 @@ int kdtree::partition(Point* P, int start, int end, int axe, int dim) {
   return p;
 }
 
+std::list<result> kdtree::search( Point q, float r){
+
+    std::list<result> reponse();
+    std::list<noeud> attente();
+
+    attente.push_front(racine);
+
+    while (attente.size()>0) {
+        noeud* a= attente.pop_front();
+
+
+
+    }
+
+
+
+
+
+
+}
+
+
+
+
+
+
 
 
 int main(){

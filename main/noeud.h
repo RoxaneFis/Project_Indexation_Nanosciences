@@ -17,7 +17,7 @@ public:
     noeud(Point _p);
     noeud(int _axe, double _med, Point _p, noeud* _left, noeud* _right);
 
-
+    bool isleaf();
 
 
 };

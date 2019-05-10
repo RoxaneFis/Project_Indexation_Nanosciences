@@ -8,7 +8,8 @@ SOURCES += \\
     kdtree.cpp \
     noeud.cpp \
     point.cpp \
-    proteine.cpp
+    proteine.cpp \
+    test_kdtree.cpp
 
 HEADERS += \
     kdtree.h \
