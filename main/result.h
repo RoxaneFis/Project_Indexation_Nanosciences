@@ -1,6 +1,7 @@
 #ifndef RESULT_H
 #define RESULT_H
 #include <string>
+#include "point.h"
 
 
 class result

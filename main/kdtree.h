@@ -3,6 +3,8 @@
 #include <iostream>
 #include "noeud.h"
 #include "point.h"
+#include "result.h"
+#include <list>
 
 class kdtree
 {
@@ -24,6 +26,7 @@ public:
     double computeMedian(Point* P, int start, int end, int c) ;
     int partition(Point* P, int start, int end, int c, int dim);
     void swap(Point* P, int i, int j);
+    std::list<result> search( Point q, float r);
 
 private:
 

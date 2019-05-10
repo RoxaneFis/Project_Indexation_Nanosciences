@@ -1,7 +1,6 @@
 #include "kdtree.h"
-#include "point.h"
-#include "stdlib.h"
-
+#include <cassert>
+#include <algorithm>
 
 //noeud(Point _p);
 //noeud(int _axe, double _med, Point _p, noeud* _left, noeud* _right);
@@ -73,18 +72,19 @@ int kdtree::partition(Point* P, int start, int end, int axe, int dim) {
   return p;
 }
 
-/*std::list<result> kdtree::search( Point q, float r){
+std::list<result> kdtree::search( Point q, float r){
 
-    std::list<result> reponse();
-    std::list<noeud> attente();
+    std::list<result> reponse;
+    std::list<noeud> attente;
 
-    attente.push_front(racine);
+    attente.push_front(*racine);
 
     while (attente.size()>0) {
-        noeud* a= attente.pop_front();
-        if(a->isleaf()){
-            if(a->p.dist(q)<r){
-                result match(a->p.label,a->p,a->p.dist(q));
+        noeud a= attente.front();
+        attente.pop_front();
+        if(a.isleaf()){
+            if(a.p.dist(q)<r){
+                result match(a.p.label,a.p,a.p.dist(q));
                 reponse.push_front(match);
             }
         }
@@ -97,7 +97,7 @@ int kdtree::partition(Point* P, int start, int end, int axe, int dim) {
 
             }
 
-            if(abs(q.coords[c]-a->med)<=r){
+            if(std::abs(q.coords[c]-a->med)<=r){
                 attente.push_last(a->left);
                 attente.push_last(a->right);
             }

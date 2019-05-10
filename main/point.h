@@ -10,7 +10,7 @@ class Point
 public:
     Point();
     Point(double* c, std::string l);
-    //~Point();
+    ~Point();
 
     static int d;
     double* coords;
