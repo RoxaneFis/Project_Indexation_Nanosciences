@@ -13,8 +13,22 @@
 
 using namespace std;
 
+/*void test_build(){
+    int n = 5;  // n points in R^{dim}
+    //Point  P[n]; //new point
+      for (int i=0; i<n; i++) {
+          double c[13];
+          for (int j=0; j<13; j++){
 
-// je cree d'abord une fonction split qui renvoie un vecteur de string
+             c[j] = j; }
+           //P[i] =Point(c, "t");
+     }
+      //kdtree k =  kdtree( P, 0, n, 0, 13);
+
+
+
+}*/
+
 void split(const string &chaine, char delimiteur, vector<string> &elements)
 {
     stringstream ss(chaine);
@@ -31,17 +45,12 @@ vector<string> split(const string &chaine, char delimiteur)
     return elements;
 }
 
-// fin de la fonction split
-
-
 
 
 int main()
 {
     const char* file="pdb.txt";
-
     // premiere lecture du fichier pour avoir le nombre de proteines
-
     std::ifstream f(file);
 
     if(f.fail()){
@@ -63,14 +72,8 @@ int main()
     f.close();
 
 
-
     // tableau des scores
     proteine score [cmpt];
-
-
-
-
-
     // 2eme parcours pour remplir le tableau et creer les proteines avec un score de zero
      ifstream f1(file);
     string line1;
@@ -88,10 +91,6 @@ int main()
     }
     f1.close();
 
-
-
-
-
     // pacrous du fichier pour creer les vecteurs et les stockes dans une structure linkedlist
     ifstream f2(file);
     std::list<Point> l;
@@ -108,12 +107,7 @@ int main()
 
     }
 
-
     f2.close();
-
-
-
-
 
     // on aura egalement un fichier txt decrivant notre proteine  ici debute l'algorithme naif
 
@@ -130,6 +124,8 @@ int main()
         vector<string> x = split(ligne_prime, ' ');
         double coords[13];
         for(int i=0;i<13;i++){
+
+           // coords[i] =std::atof(x[i].c_str());
             coords[i]=std::stod(x[i]);
         }
         std::string s= x[12];
