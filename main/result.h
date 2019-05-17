@@ -8,6 +8,8 @@ class result
 {
 public:
     result(std::string name, Point p, double dist);
+    result();
+    ~result();
     std::string name;
     Point p;
     double dist;

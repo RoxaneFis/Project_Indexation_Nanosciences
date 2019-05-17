@@ -4,7 +4,7 @@
 #include <string>
 
 
-
+//ATTENTION  : d non utilise pour print (13 a la place)
 class Point
 {
 public:
