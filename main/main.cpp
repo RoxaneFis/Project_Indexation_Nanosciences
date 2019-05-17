@@ -94,8 +94,28 @@ int main()
     f.close();
 
 
+
+
     // tableau des scores
     proteine score [cmpt];
+
+    // parcours pour avoir le nombre de points
+    std::ifstream fx(file);
+
+    if(fx.fail()){
+        std::cout<<"Cannot open file from "<<file <<std::endl;
+
+    }
+    string linex;
+    int cmptx=1;
+    while(getline(f,linex)){
+
+        cmptx=cmptx+1;
+
+    }
+    f.close();
+
+
     // 2eme parcours pour remplir le tableau et creer les proteines avec un score de zero
      ifstream f1(file);
     string line1;
@@ -113,10 +133,11 @@ int main()
     }
     f1.close();
 
-    // pacrous du fichier pour creer les vecteurs et les stockes dans une structure linkedlist
+    // pacrous du fichier pour creer les vecteurs et les stockes dans un tableau
     ifstream f2(file);
-    std::list<Point> l;
+    Point * Points = new Point[cmptx];
     string ligne2;
+    int w=0;
     while(getline(f2, ligne2)){
         vector<string> x = split(ligne2, ' ');
         double * coords= new double[13];
@@ -125,7 +146,8 @@ int main()
         }
         std::string s= x[13];
         Point *p= new Point(coords,s);
-        l.push_back(*p);
+        Points[i]=*p;
+        w=w+1;
 
     }
 
@@ -152,9 +174,9 @@ int main()
         }
         std::string s= x[12];
         Point * p= new Point(coords,s);
-        while(! l.empty()) // on parcourt tous les autres vecteurs
+        for(int l=0;i<cmptx;i++) // on parcourt tous les autres vecteurs
         {
-            Point q= l.front();
+            Point q= Points[l];
             if( q.dist(*p)< 100)
             {
                 string name1= q.label;
@@ -165,7 +187,7 @@ int main()
                 }
 
             }
-            l.pop_front();
+
 
         }
     }
