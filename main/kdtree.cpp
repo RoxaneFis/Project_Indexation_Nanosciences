@@ -9,9 +9,8 @@ noeud* kdtree::build (Point* P, int start, int end, int c, int dim) {
   if (end-start == 0)
     return nullptr;
   else if (end-start == 1){  // leaf node
-      noeud n =noeud(P[start]);
-      noeud *i = &n;
-      return i;}
+      noeud* n = new noeud(P[start]);
+      return n;}
 
   else {  // internal node
       for (int i=start; i<end; i++){
@@ -25,13 +24,16 @@ noeud* kdtree::build (Point* P, int start, int end, int c, int dim) {
 
     noeud*left = build (P, start, p, cc, dim);
     noeud *right=build (P, p+1, end, cc, dim);
-    noeud racine =noeud(c,m,P[p],left,right);
-    noeud* retour= &racine;
-    return retour;
+    noeud *racine =new noeud(c,m,P[p],left,right);
+   // noeud* retour= &racine;
+    return racine;
 }
 
 kdtree::kdtree(Point* P, int start, int end, int c, int dim){
     racine = build (P, start, end, c,  dim);
+}
+kdtree::~kdtree(){
+
 }
 
 
@@ -69,7 +71,7 @@ int kdtree::partition(Point* P, int start, int end, int axe, int dim) {
   return p;
 }
 
-std::list<result> kdtree::search( Point q, float r){
+std::list<result> kdtree::search( Point q, double r){
 
     std::list<result> reponse;
     std::list<noeud> attente;
@@ -112,6 +114,33 @@ std::list<result> kdtree::search( Point q, float r){
     }
     return reponse;
 }
+
+
+void kdtree::printTree(noeud* racine){
+    int gen = 0;
+    int i = 0;
+    if(racine!=nullptr){
+        gen=generation(racine);
+        for(i=0;i<gen;i++){
+            std::cout<<" "<<std::endl;
+    }
+        racine->p.print(); //affiche point
+        printTree(racine->left);
+        printTree(racine->right);
+    }
+}
+
+
+int kdtree::generation(noeud * racine){
+    if (racine == nullptr)
+        return 0;
+    else
+        return 1 + std::max(generation(racine->left), generation((racine->right)));
+
+}
+
+
+
 
 
 

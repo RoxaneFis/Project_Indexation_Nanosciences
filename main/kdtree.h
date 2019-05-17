@@ -26,7 +26,9 @@ public:
     double computeMedian(Point* P, int start, int end, int c) ;
     int partition(Point* P, int start, int end, int c, int dim);
     void swap(Point* P, int i, int j);
-    std::list<result> search( Point q, float r);
+    std::list<result> search( Point q, double r);
+    void printTree(noeud* racine);
+    int generation(noeud* racine);
 
 private:
 

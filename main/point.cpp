@@ -45,12 +45,16 @@ double Point::getcoord(int i){
 
 
 
-/*void Point::print(Point p, int dim) {
-  std::cout << p[0];
-  for ( int j = 1; j < dim; j++)
-    std::cout << " " << p[j];
+void Point::print() {
+    std::cout<<"Label :"<<label<<std::endl;
+      std::cout<<"Coord :"<<std::endl;
+  std::cout << this->coords[0];
+  for ( int j = 1; j < this->d; j++){
+    std::cout << " " << this->coords[j];}
   std::cout << "\n";
-}*/
+}
+
+
 
 
 

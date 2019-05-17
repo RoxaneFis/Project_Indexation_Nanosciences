@@ -11,23 +11,42 @@
 #include "result.h"
 #include "noeud.h"
 
+
+
 using namespace std;
 
-/*void test_build(){
-    int n = 5;  // n points in R^{dim}
-    //Point  P[n]; //new point
-      for (int i=0; i<n; i++) {
-          double c[13];
-          for (int j=0; j<13; j++){
+void test_build(){
+    std::cout<<"Test_Build"<<std::endl;
+    int n = 7;  // n points in R^{dim}
+    Point * P;
+    P= new Point[n]; //new point
+    Point::d=2;
+    for (int i=0; i<n; i++) {
+        double *c=new double[2];
+        for (int j=0; j<2; j++){
 
-             c[j] = j; }
-           //P[i] =Point(c, "t");
-     }
-      //kdtree k =  kdtree( P, 0, n, 0, 13);
+            c[j] = (i+1);
+        }
+        P[i] =Point(c, "t");
+         P[i].print();
 
+    }
+    kdtree * k = new kdtree( P, 0, n, 0, 13);
+    k->printTree(k->racine);
+    std::cout<<std::endl;
+    double *co = new double[2];
+    co[0]=2;
+    co[1]=3;
+    Point *q = new Point(co, "q");
 
-
-}*/
+    std::cout<<"Result"<<std::endl;
+     std::list<result> res= k->search( *q, 1.1);
+     std::list<result>::iterator it;
+     for(it=res.begin();it!=res.end();it++){
+         it->p.print();
+         std::cout<<it->dist<<std::endl;
+    }
+}
 
 void split(const string &chaine, char delimiteur, vector<string> &elements)
 {
@@ -49,7 +68,10 @@ vector<string> split(const string &chaine, char delimiteur)
 
 int main()
 {
-    const char* file="pdb.txt";
+    //test_build();
+
+
+    const char* file="/Users/roxanefischer/Documents/cours/modal_nanosciences/Indexation_Modal_Nanosciences/kdtree/kdtree/main/dataSet.txt";
     // premiere lecture du fichier pour avoir le nombre de proteines
     std::ifstream f(file);
 
@@ -97,13 +119,13 @@ int main()
     string ligne2;
     while(getline(f2, ligne2)){
         vector<string> x = split(ligne2, ' ');
-        double coords[13];
+        double * coords= new double[13];
         for(int i=0;i<13;i++){
             coords[i]=std::stod(x[i]);
         }
         std::string s= x[13];
-        Point p=  Point(coords,s);
-        l.push_back(p);
+        Point *p= new Point(coords,s);
+        l.push_back(*p);
 
     }
 
@@ -111,7 +133,7 @@ int main()
 
     // on aura egalement un fichier txt decrivant notre proteine  ici debute l'algorithme naif
 
-    const char* fichier="prot.txt";
+    const char* fichier="/Users/roxanefischer/Documents/cours/modal_nanosciences/Indexation_Modal_Nanosciences/kdtree/kdtree/main/prot.txt";
      ifstream f3(fichier);
     if(f3.fail()){
         std::cout<<"Cannot open file from "<<fichier <<std::endl;
@@ -122,18 +144,18 @@ int main()
     while(getline(f3, ligne_prime))
     {
         vector<string> x = split(ligne_prime, ' ');
-        double coords[13];
+        double *coords =new double[13];
         for(int i=0;i<13;i++){
 
            // coords[i] =std::atof(x[i].c_str());
             coords[i]=std::stod(x[i]);
         }
         std::string s= x[12];
-        Point p=  Point(coords,s);
+        Point * p= new Point(coords,s);
         while(! l.empty()) // on parcourt tous les autres vecteurs
         {
             Point q= l.front();
-            if( q.dist(p)< 100)
+            if( q.dist(*p)< 100)
             {
                 string name1= q.label;
                 for(int i=0;i<cmpt;i++){
@@ -159,7 +181,9 @@ int main()
             std::cout<< score[j].name<< std::endl;
         }
     }
-    // fin de l'algorithme naif
+    // fin de l'algorithme naif*/
+
+
 
 
 
