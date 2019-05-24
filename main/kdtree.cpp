@@ -1,6 +1,10 @@
 #include "kdtree.h"
 #include <cassert>
 #include <algorithm>
+#include <iostream>
+#include <string>
+#include <fstream>
+
 
 
 //fonction constructeurs
@@ -147,6 +151,32 @@ int kdtree::generation(noeud * racine){
 
 }
 
+
+void kdtree::KDTreeToText(noeud* racine){
+
+    if(racine != nullptr){
+
+        ofstream fichier("KDTreeText.txt", ios::out | ios::app);
+
+        double* coords = racine->p.coords  ;
+        std::string label =racine->p.label ;
+
+        std::string point = "" ;
+
+        for(int i=0; i<13; i++){
+            point += to_string(coords[i]) ;
+            point += " " ;
+        }
+
+        point += label ;
+
+        fichier << point << std::endl ;
+
+        KDTreeToText(racine->left);
+        KDTreeToText(racine->right);
+
+    }
+}
 
 
 

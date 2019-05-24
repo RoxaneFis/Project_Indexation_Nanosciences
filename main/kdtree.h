@@ -29,6 +29,7 @@ public:
     std::list<result*>* search( Point q, double r);
     void printTree(noeud* racine);
     int generation(noeud* racine);
+    void KDTreeToText(noeud* racine);
 
 private:
 
