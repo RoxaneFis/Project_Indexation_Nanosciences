@@ -15,42 +15,6 @@
 
 using namespace std;
 
-void test_build(){
-    std::cout<<"Test_Build"<<std::endl;
-    int n = 7;  // n points in R^{dim}
-    Point * P;
-    P= new Point[n]; //new point
-    Point::d=13;
-    for (int i=0; i<n; i++) {
-        double *c=new double[13];
-        for (int j=0; j<13; j++){
-
-            c[j] = (i+1);
-        }
-        P[i] =Point(c, "t");
-        P[i].print();
-
-    }
-    kdtree * k = new kdtree( P, 0, n, 0, 13);
-    k->printTree(k->racine);
-    std::cout<<std::endl;
-    double *co = new double[13];
-    co[0]=2;
-    co[1]=3;
-    Point *q = new Point(co, "q");
-
-    std::cout<<"Result2"<<std::endl;
-    std::list<result*> *res= k->search( *q, 10);
-    std::list<result*>::iterator it;
-    for(it=res->begin();it!=res->end();it++){
-        (*it)->p.print();
-        std::cout<<(*it)->dist<<std::endl;
-    }
-    std::cout<<"Result3"<<std::endl;
-
-}
-
-
 
 
 void split(const string &chaine, char delimiteur, vector<string> &elements)
@@ -73,7 +37,7 @@ vector<string> split(const string &chaine, char delimiteur)
 
 int main()
 {
-     test_build();
+     //test_build();
 
     const char* file="/Users/roxanefischer/Documents/cours/modal_nanosciences/Indexation_Modal_Nanosciences/kdtree/kdtree/main/test_kd_ok.txt";
     // premiere lecture du fichier pour avoir le nombre de proteines
@@ -124,6 +88,11 @@ int main()
     }
     f2.close();
     kdtree * k = new kdtree( Points, 0, cmptx, 0, 13);
+    k->printTree(k->racine);
+
+
+
+    k->KDTreeToText(k->racine);
 
 
     //NAIF
@@ -239,5 +208,43 @@ int main()
 
 
     return 0;
+}
+
+
+
+
+void test_build(){
+    std::cout<<"Test_Build"<<std::endl;
+    int n = 7;  // n points in R^{dim}
+    Point * P;
+    P= new Point[n]; //new point
+    Point::d=13;
+    for (int i=0; i<n; i++) {
+        double *c=new double[13];
+        for (int j=0; j<13; j++){
+
+            c[j] = (i+1);
+        }
+        P[i] =Point(c, "t");
+        P[i].print();
+
+    }
+    kdtree * k = new kdtree( P, 0, n, 0, 13);
+    k->printTree(k->racine);
+    std::cout<<std::endl;
+    double *co = new double[13];
+    co[0]=2;
+    co[1]=3;
+    Point *q = new Point(co, "q");
+
+    std::cout<<"Result2"<<std::endl;
+    std::list<result*> *res= k->search( *q, 10);
+    std::list<result*>::iterator it;
+    for(it=res->begin();it!=res->end();it++){
+        (*it)->p.print();
+        std::cout<<(*it)->dist<<std::endl;
+    }
+    std::cout<<"Result3"<<std::endl;
+
 }
 

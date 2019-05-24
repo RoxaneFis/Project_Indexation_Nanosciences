@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-
+#include <ios>
 
 
 //fonction constructeurs
@@ -153,25 +153,20 @@ int kdtree::generation(noeud * racine){
 
 
 void kdtree::KDTreeToText(noeud* racine){
-
     if(racine != nullptr){
 
-        ofstream fichier("KDTreeText.txt", ios::out | ios::app);
-
+        std::ofstream fichier("/Users/roxanefischer/Documents/cours/modal_nanosciences/Indexation_Modal_Nanosciences/kdtree/kdtree/main/KDTreeText.txt", std::ios::out | std::ios::app);
         double* coords = racine->p.coords  ;
         std::string label =racine->p.label ;
 
         std::string point = "" ;
 
         for(int i=0; i<13; i++){
-            point += to_string(coords[i]) ;
+            point += std::to_string(coords[i]) ;
             point += " " ;
         }
-
         point += label ;
-
         fichier << point << std::endl ;
-
         KDTreeToText(racine->left);
         KDTreeToText(racine->right);
 
