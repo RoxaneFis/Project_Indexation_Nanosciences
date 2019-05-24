@@ -175,7 +175,7 @@ void kdtree::KDTreeToText(noeud* racine){
     }
 }
 
-void
+
 
 
 

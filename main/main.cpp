@@ -35,9 +35,9 @@ vector<string> split(const string &chaine, char delimiteur)
 
 
 
-int main()
+
+/*int main()
 {
-     //test_build();
 
     const char* file="/Users/roxanefischer/Documents/cours/modal_nanosciences/Indexation_Modal_Nanosciences/kdtree/kdtree/main/test_kd_ok.txt";
     // premiere lecture du fichier pour avoir le nombre de proteines
@@ -98,7 +98,7 @@ int main()
     //NAIF
 
 
-    /*const char* fichier="/Users/roxanefischer/Documents/cours/modal_nanosciences/Indexation_Modal_Nanosciences/kdtree/kdtree/main/3prot.txt";
+    const char* fichier="/Users/roxanefischer/Documents/cours/modal_nanosciences/Indexation_Modal_Nanosciences/kdtree/kdtree/main/3prot.txt";
     ifstream f3(fichier);
     if(f3.fail()){
         std::cout<<"Cannot open file from "<<fichier <<std::endl;
@@ -137,7 +137,7 @@ int main()
             std::cout<< score[j].name<< std::endl;
         }
     }
-    // fin de l'algorithme naif*/
+    // fin de l'algorithme naif
 
 
 
@@ -180,7 +180,7 @@ int main()
     std::list<result*> *resultat =  new std::list<result*> ;
     int m =0;
 
-    /*while(!l->empty()){
+    while(!l->empty()){
         std::cout<<"POINT Q----------------------------------------------------------------------------------------------------------"<<std::endl;
         Point q= l->front();
         l->pop_front();
@@ -202,13 +202,13 @@ int main()
         }
           std::cout<<std::endl;
 
-    }*/
+    }
 
 
 
 
     return 0;
-}
+}*/
 
 
 
