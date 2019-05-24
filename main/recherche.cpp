@@ -163,7 +163,6 @@ vector<string> recherche::split(const string &chaine, char delimiteur){
 
 
 
-
 int main(){
     recherche * r = new recherche(recherche::creation(),1);
     std::set<proteine*,protcompare> *result = r->classement();
