@@ -1,6 +1,7 @@
 #ifndef PROTEINE_H
 #define PROTEINE_H
 #include <iostream>
+#include "result.h"
 using namespace std;
 class proteine
 {
@@ -10,11 +11,10 @@ public:
 
     proteine();
     proteine(string s, int p);
+    proteine(result& s);
     ~proteine();
     int getscore();
     void addscore();
-
-private:
     int score;
 };
 

@@ -11,6 +11,11 @@ proteine::proteine(string s, int p){
 proteine::~proteine(){
 
 }
+proteine::proteine(result& s){
+    name=s.name;
+    score=0;
+
+}
 
 int proteine::getscore(){
     return score;
