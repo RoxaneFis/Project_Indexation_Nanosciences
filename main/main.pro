@@ -9,9 +9,11 @@ SOURCES += \
     noeud.cpp \
     point.cpp \
     proteine.cpp \
+    recherche.cpp\
     result.cpp
 
 HEADERS += \
+    recherche.h\
     kdtree.h \
     noeud.h \
     point.h \
