@@ -1,7 +1,7 @@
 #include "point.h"
 #include <cmath>	// for sqrt, fabs
 
-int Point::d;
+int Point::d=13;
 
 Point::Point(){
 }
@@ -19,8 +19,8 @@ Point::~Point(){
 double Point::dist(Point &q)
 {
     double sqd = 0.0;
-    for (int m = 0; m < d; m++)
-        sqd += (coords[m]-q.coords[m]) * (coords[m]-q.coords[m]);
+    for (int m = 0; m < d; m++){
+        sqd =sqd+ (coords[m]-q.coords[m]) * (coords[m]-q.coords[m]);}
     return sqrt(sqd);
 }
 

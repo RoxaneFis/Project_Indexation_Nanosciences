@@ -46,7 +46,7 @@ void test_build(){
         (*it)->p.print();
         std::cout<<(*it)->dist<<std::endl;
     }
-     std::cout<<"Result3"<<std::endl;
+    std::cout<<"Result3"<<std::endl;
 
 }
 
@@ -73,34 +73,30 @@ vector<string> split(const string &chaine, char delimiteur)
 
 int main()
 {
-    //test_build();
+    // test_build();
 
-
-
-    const char* file="/Users/roxanefischer/Documents/cours/modal_nanosciences/Indexation_Modal_Nanosciences/kdtree/kdtree/main/prot0.txt";
+    const char* file="/Users/roxanefischer/Documents/cours/modal_nanosciences/Indexation_Modal_Nanosciences/kdtree/kdtree/main/test_kd_ok.txt";
     // premiere lecture du fichier pour avoir le nombre de proteines
     std::ifstream f(file);
 
     if(f.fail()){
         std::cout<<"Cannot open file from "<<file <<std::endl;
-
     }
-
-    // tableau des scores
-    int cmpt = 1;
-    int cmptx =29;
-    proteine *score =new proteine[cmpt];
-    Point * Points = new Point[cmptx];
-
-
     //LECTURE FICHIER
     ifstream f2(file);
     string line2;
+    // tableau des scores
+    getline(f2,line2);
+    int cmpt = std::stoi(line2);
+    getline(f2,line2);
+    int cmptx = std::stoi(line2);
 
-
-    int i=0;
+    proteine *score =new proteine[cmpt];
+    Point * Points = new Point[cmptx];
+    int b=0;
     int j =0;
 
+    //  test_build();
 
     while(getline(f2,line2)){
         //Lecture + creation point/proteine
@@ -109,9 +105,11 @@ int main()
         double * coords= new double[13];
         for(int i=0;i<13;i++){
             coords[i]=std::stod(x[i]); }
-        Points[i++]= Point(coords,name);
+        Points[b++]= Point(coords,name);
         score[j++]= proteine(name, 0);
+
         while( split(line2,' ')[13]==name){
+
             if( !getline(f2,line2)){
                 break;
             };
@@ -120,20 +118,18 @@ int main()
             double * coords= new double[13];
             for(int i=0;i<13;i++){
                 coords[i]=std::stod(x[i]); }
-            Points[i++]= Point(coords,name);
+            Points[b++]= Point(coords,name);
         }
 
     }
     f2.close();
-
-
+    kdtree * k = new kdtree( Points, 0, cmptx, 0, 13);
 
 
     //NAIF
 
 
-
-    /*const char* fichier="/Users/roxanefischer/Documents/cours/modal_nanosciences/Indexation_Modal_Nanosciences/kdtree/kdtree/main/prot.txt";
+    /*const char* fichier="/Users/roxanefischer/Documents/cours/modal_nanosciences/Indexation_Modal_Nanosciences/kdtree/kdtree/main/3prot.txt";
     ifstream f3(fichier);
     if(f3.fail()){
         std::cout<<"Cannot open file from "<<fichier <<std::endl;
@@ -176,26 +172,38 @@ int main()
 
 
 
+
     //Lecture + creation point/proteine
 
-    const char* fichier="/Users/roxanefischer/Documents/cours/modal_nanosciences/Indexation_Modal_Nanosciences/kdtree/kdtree/main/prot0.txt";
-
+    const char* fichier="/Users/roxanefischer/Documents/cours/modal_nanosciences/Indexation_Modal_Nanosciences/kdtree/kdtree/main/test_ok.txt";
 
     ifstream f1(fichier);
     string line1;
-    std::list<Point> *l= new std::list<Point>();
-    while(getline(f1,line1)){
+    getline(f1,line1);
+    int cmpt_prot = std::stoi(line1);
+    getline(f1,line1);
+    int cmptx_prot = std::stoi(line1);
 
+
+    std::list<Point> *l= new std::list<Point>();
+    int p =0;
+    while(getline(f1,line1)){
+        if(line1.size()==0){
+            break;
+        }
         vector<string> x = split(line1, ' ');
         string name= x[13];
         double * coords= new double[13];
         for(int i=0;i<13;i++){
-            coords[i]=std::stod(x[i]); }
+            coords[i]=std::stod(x[i]);}
         l->push_back(Point(coords,name));
+
     }
+    //std::cout<<"B"<<std::endl;
     int nb = l->size();
     f1.close();
-    kdtree * k = new kdtree( Points, 0, cmptx, 0, 13);
+
+
 
     // k->printTree(k->racine);
 
@@ -203,23 +211,29 @@ int main()
     std::list<result*> *resultat =  new std::list<result*> ;
     int m =0;
 
-    std::cout<<"inch"<<std::endl;
     while(!l->empty()){
+        std::cout<<"POINT Q----------------------------------------------------------------------------------------------------------"<<std::endl;
         Point q= l->front();
         l->pop_front();
-        std::list<result*>* res= k->search( q, 1.1);
+        std::cout<<"Voisin de Point :";
+        q.print();
+
+        std::list<result*>* res= k->search( q, 2);
         resultat->insert(resultat->end(),res->begin(),res->end());
-    std::cout<<"RES"<<std::endl;
+
+        std::cout<<"Voisins-----------------------------------------------------------------------"<<std::endl;
+        std::cout<<"nb de voisins :"<<res->size()<<std::endl;
         std::list<result*>::iterator it;
         for(it=(*res).begin();it!=(*res).end();it++){
-           // std::cout<<"PPP"<<std::endl;
+
             (*it)->p.print();
-            std::cout<<(*it)->dist<<std::endl;
+            std::cout<<"dist "<<(*it)->dist<<std::endl;
+            std::cout<<std::endl;
 
         }
+          std::cout<<std::endl;
 
     }
-
 
 
 

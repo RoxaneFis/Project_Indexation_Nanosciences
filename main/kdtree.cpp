@@ -85,11 +85,11 @@ std::list<result*>* kdtree::search( Point q, double r){
         noeud* a= attente.front();
         attente.pop_front();
 
-       // std::cout << "pop front" << std::endl;
+        // std::cout << "pop front" << std::endl;
         //std::cout << "a:" << a << std::endl;
 
         if(a->isleaf()){
-           // std::cout << "leaf" << std::endl;
+            // std::cout << "leaf" << std::endl;
             if(a->p.dist(q)<r){
                 result *match=new result(a->p.label,a->p,a->p.dist(q));
                 reponse->push_front(match);
@@ -113,7 +113,7 @@ std::list<result*>* kdtree::search( Point q, double r){
 
             else{
                 if(q.coords[c]>a->med){
-                   if (a->right) attente.push_back(a->right);
+                    if (a->right) attente.push_back(a->right);
                 }
                 else{if (a->left) attente.push_back(a->left);}
 
