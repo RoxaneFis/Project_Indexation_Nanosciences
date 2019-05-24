@@ -156,10 +156,12 @@ void kdtree::KDTreeToText(noeud* racine){
     if(racine != nullptr){
 
         std::ofstream fichier("/Users/roxanefischer/Documents/cours/modal_nanosciences/Indexation_Modal_Nanosciences/kdtree/kdtree/main/KDTreeText.txt", std::ios::out | std::ios::app);
+
+        bool feuille = racine->noeud::isleaf() ;
         double* coords = racine->p.coords  ;
         std::string label =racine->p.label ;
 
-        std::string point = "" ;
+        std::string point = std::to_string(feuille) + " " ;
 
         for(int i=0; i<13; i++){
             point += std::to_string(coords[i]) ;
@@ -172,6 +174,8 @@ void kdtree::KDTreeToText(noeud* racine){
 
     }
 }
+
+void
 
 
 
