@@ -8,12 +8,15 @@
 
 
 
-recherche::recherche(kdtree * k,double rayon)
+recherche::recherche(kdtree * k,double rayon,char*fichier)
 {
     this->k=k;
+    this->fichier=fichier;
 
     this->rayon=rayon;
 }
+
+
 std::list<Point> *recherche::convert(){
     ifstream f1(fichier);
 
@@ -109,7 +112,7 @@ std::set<proteine*,protcompare> *recherche::classement(){
 
 kdtree * recherche::creation(){
 
-    const char* file="/Users/roxanefischer/Documents/cours/modal_nanosciences/Indexation_Modal_Nanosciences/kdtree/kdtree/main/test_kd_ok.txt";
+    const char* file="/Users/roxanefischer/Documents/cours/modal_nanosciences/Indexation_Modal_Nanosciences/kdtree/kdtree/main/dataSet.txt";
     // premiere lecture du fichier pour avoir le nombre de proteines
     ifstream f(file);
     string line2;
@@ -164,7 +167,10 @@ vector<string> recherche::split(const string &chaine, char delimiteur){
 
 
 int main(){
-    recherche * r = new recherche(recherche::creation(),1);
+
+     char* repere="/Users/roxanefischer/Documents/cours/modal_nanosciences/Indexation_Modal_Nanosciences/kdtree/kdtree/main/prot_ok.txt";
+    //fichier = repere;
+    recherche * r = new recherche(recherche::creation(),0.01,repere);
     std::set<proteine*,protcompare> *result = r->classement();
     std::set<proteine*> ::iterator it;
     for((it)=result->begin(); it!=result->end(); it++){
