@@ -163,7 +163,7 @@ int kdtree::generation(noeud * racine){
 void kdtree::KDTreeToText(noeud* racine){
     if(racine != nullptr){
 
-        std::ofstream fichier("/Users/roxanefischer/Documents/cours/modal_nanosciences/Indexation_Modal_Nanosciences/kdtree/kdtree/main/KDTreeText.txt", std::ios::out | std::ios::app);
+        std::ofstream fichier("/users/eleves-b/2017/antoine.dupre/KDTreeText.txt", std::ios::out | std::ios::app);
 
         bool feuille = racine->noeud::isleaf() ;
         double* coords = racine->p.coords  ;

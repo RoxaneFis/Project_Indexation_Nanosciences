@@ -39,9 +39,9 @@ vector<string> split(const string &chaine, char delimiteur)
 int main()
 {
 
-    /*
 
-    const char* file="/Users/roxanefischer/Documents/cours/modal_nanosciences/Indexation_Modal_Nanosciences/kdtree/kdtree/main/test_kd_ok.txt";
+
+    const char* file="/users/eleves-b/2017/antoine.dupre/dataSet2.txt";
     // premiere lecture du fichier pour avoir le nombre de proteines
     std::ifstream f(file);
 
@@ -95,7 +95,7 @@ int main()
 
 
     k->KDTreeToText(k->racine);
-
+   /*
 
     //NAIF
 
