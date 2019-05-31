@@ -36,10 +36,10 @@ public:
     void printTree(noeud* racine);
     int generation(noeud* racine);
     void KDTreeToText(noeud* racine);
-    void split(const std::string &chaine, char delimiteur, std::vector<std::string> &elements);
-    std::vector<std::string> split(const std::string &chaine, char delimiteur);
-    kdtree TextToKDTree();
-    void AuxFonction1(noeud* racine, std::ifstream& fichier);
+    static void split(const std::string &chaine, char delimiteur, std::vector<std::string> &elements);
+    static std::vector<std::string> split(const std::string &chaine, char delimiteur);
+    static kdtree TextToKDTree();
+    static void AuxFonction1(noeud* racine, std::ifstream& fichier);
 
 private:
 

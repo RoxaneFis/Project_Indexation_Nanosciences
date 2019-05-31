@@ -41,7 +41,7 @@ int main()
 
 
 
-    const char* file="/users/eleves-b/2017/antoine.dupre/dataSet2.txt";
+    const char* file="/Users/roxanefischer/Documents/cours/modal_nanosciences/Indexation_Modal_Nanosciences/kdtree/kdtree/main/dataSet.txt";
     // premiere lecture du fichier pour avoir le nombre de proteines
     std::ifstream f(file);
 
@@ -90,11 +90,16 @@ int main()
     }
     f2.close();
     kdtree * k = new kdtree( Points, 0, cmptx, 0, 13);
-    k->printTree(k->racine);
+    //k->printTree(k->racine);
 
 
 
-    k->KDTreeToText(k->racine);
+
+    kdtree p = kdtree::TextToKDTree();
+    std::cout<<"A-------------------<<"<<std::endl;
+    p.printTree(p.racine);
+    std::cout<<"A-------------------<<"<<std::endl;
+
    /*
 
     //NAIF
@@ -240,7 +245,7 @@ void test_build(){
     Point *q = new Point(co, "q");
 
     std::cout<<"Result2"<<std::endl;
-    std::list<result*> *res= k->search( *q, 10);
+    std::list<result*> *res= k->search( *q, 5);
     std::list<result*>::iterator it;
     for(it=res->begin();it!=res->end();it++){
         (*it)->p.print();
