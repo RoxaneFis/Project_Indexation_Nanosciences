@@ -166,20 +166,6 @@ vector<string> recherche::split(const string &chaine, char delimiteur){
 
 
 
-int main(){
-
-     char* repere="/Users/roxanefischer/Documents/cours/modal_nanosciences/Indexation_Modal_Nanosciences/kdtree/kdtree/main/prot_ok.txt";
-    //fichier = repere;
-    recherche * r = new recherche(recherche::creation(),0.01,repere);
-    std::set<proteine*,protcompare> *result = r->classement();
-    std::set<proteine*> ::iterator it;
-    for((it)=result->begin(); it!=result->end(); it++){
-        std::cout<<"name : "<<(*it)->name<<" score "<<(*it)->score<<std::endl;
-    }
-    return 0;
-
-
-}
 
 
 

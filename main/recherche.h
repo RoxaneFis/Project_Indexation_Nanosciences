@@ -25,7 +25,7 @@ class recherche
 {
 public:
     //constructeur
-    recherche(kdtree * k, double rayon);
+    recherche(kdtree * k, double rayon,char*fichier);
 
     //variables
     kdtree *k;

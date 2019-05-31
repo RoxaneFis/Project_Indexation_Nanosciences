@@ -5,6 +5,10 @@
 #include <string>
 #include <fstream>
 #include <ios>
+#include <vector>
+#include <sstream>
+#include <list>
+
 
 
 //fonction constructeurs
@@ -40,6 +44,10 @@ kdtree::kdtree(Point* P, int start, int end, int c, int dim){
     racine = build (P, start, end, c,  dim);
 }
 kdtree::~kdtree(){
+
+}
+
+kdtree::kdtree(){
 
 }
 
@@ -178,7 +186,67 @@ void kdtree::KDTreeToText(noeud* racine){
 
 
 
+void kdtree::split(const std::string &chaine, char delimiteur, std::vector<std::string> &elements){
+    std::stringstream ss(chaine);
+    std::string sousChaine;
+    while (getline(ss, sousChaine, delimiteur))
+    {
+        elements.push_back(sousChaine);
+    }
+}
 
+std::vector<std::string> kdtree::split(const std::string &chaine, char delimiteur){
+    std::vector<std::string> elements;
+    split(chaine, delimiteur, elements);
+    return elements;
+}
+
+
+
+
+void kdtree::AuxFonction1(noeud* racine, std::ifstream& fichier){
+
+    std::string ligne;
+    while (getline(fichier, ligne)) {
+
+        std::vector<std::string> pointTxt = split(ligne, ' ');
+
+        int isleaf = stoi(pointTxt[0]) ;
+
+        double* coords = new double(13);
+        for(int i = 1; i<14; i++){
+            coords[i] = stod(pointTxt[i]);
+        }
+
+        Point* P = new Point(coords, pointTxt[14]);
+
+        racine->p= *P ;
+
+        if(isleaf == 0){
+            AuxFonction1(racine->left, fichier);
+            AuxFonction1(racine->right, fichier);
+
+        }
+
+    }
+
+}
+
+
+kdtree kdtree::TextToKDTree(){
+
+    std::ifstream fichier("/Users/roxanefischer/Documents/cours/modal_nanosciences/Indexation_Modal_Nanosciences/kdtree/kdtree/main/KDTreeText.txt", std::ios::out | std::ios::app);
+    noeud* racine = nullptr ;
+
+    AuxFonction1(racine, fichier) ;
+
+    fichier.close();
+
+    kdtree* k= new kdtree();
+    k->racine = racine ;
+
+    return *k ;
+}
 
 
 

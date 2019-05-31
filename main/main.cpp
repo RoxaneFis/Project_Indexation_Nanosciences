@@ -36,8 +36,10 @@ vector<string> split(const string &chaine, char delimiteur)
 
 
 
-/*int main()
+int main()
 {
+
+    /*
 
     const char* file="/Users/roxanefischer/Documents/cours/modal_nanosciences/Indexation_Modal_Nanosciences/kdtree/kdtree/main/test_kd_ok.txt";
     // premiere lecture du fichier pour avoir le nombre de proteines
@@ -202,13 +204,13 @@ vector<string> split(const string &chaine, char delimiteur)
         }
           std::cout<<std::endl;
 
-    }
+    } */
 
 
 
 
     return 0;
-}*/
+}
 
 
 
