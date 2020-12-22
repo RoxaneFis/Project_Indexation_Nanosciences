@@ -3,6 +3,7 @@
 
 ## Example of a KD-Tree
 ![](figures/Basic_KD_Tree.jpg)
+
 *Each Circle Represents a Feature, and Each Area is Used to Limit the Histogram Calculations, (Left) The Division Cluster Areas (Right) the KD-Tree* 
 
 *Figure from Nadhir Ben Halima*
